@@ -1,0 +1,27 @@
+#whreinsurance_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#whreinsurance_container div{
+  display: flex;
+  flex-direction: column;
+}
+
+#whreinsurance_container div img{
+  margin: 20px auto;
+  height: 50px;
+  width: 50px;
+}
+
+#whreinsurance_container div span{
+  font-weight: 700;
+  margin: auto;
+}
+
+#whreinsurance_container div p{
+  margin: auto;
+  text-align: center;
+}
