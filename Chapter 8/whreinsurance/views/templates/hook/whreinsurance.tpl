@@ -1,17 +1,17 @@
 <div id="whreinsurance_container">
   <div>
     <img src="{$module_img_dir}wh1.png"/>
-    <span>Free delivery</span>
-    <p>Get free delivery<br/>for orders above 50&euro;</p>
+    <span>{l s="Free delivery" mod="whreinsurance"}</span>
+    <p>{l s="Get free delivery" mod="whreinsurance"}<br/>{l s="for orders above 50€" mod="whreinsurance"}</p>
   </div>
   <div>
     <img src="{$module_img_dir}wh2.png"/>
-    <span>Secured payments</span>
-    <p>Every transaction is secured<br/>by our partner</p>
+    <span>{l s="Secured payments" mod="whreinsurance"}</span>
+    <p>{l s="Every transaction is secured" mod="whreinsurance"}<br/>{l s="by our partner" mod="whreinsurance"}</p>
   </div>
   <div>
     <img src="{$module_img_dir}wh3.png"/>
-    <span>Free returns</span>
-    <p>Don't hesitate, free return<br/>for your products within 15 days</p>
+    <span>{l s="Free returns" mod="whreinsurance"}</span>
+    <p>{l s="Don't hesitate, free return" mod="whreinsurance"}<br/>{l s="for your products within 15 days" mod="whreinsurance"}</p>
   </div>
 </div>
