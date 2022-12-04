@@ -20,7 +20,7 @@ class WHReinsurance extends Module
             'min' => '1.7.0',
             'max' => '8.99.99',
         ];
-        $this->bootstrap = true;
+        $this->bootstrap = false;
 
         parent::__construct();
 
