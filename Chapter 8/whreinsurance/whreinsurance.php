@@ -49,7 +49,7 @@ class WHReinsurance extends Module
         return $this->display(__FILE__, 'whreinsurance.tpl');
     }
 
-    public function hookActionFrontControllerSetMedia()
+    public function hookActionFrontControllerSetMedia($params)
     {
         $this->context->controller->registerStylesheet(
             'whreinsurance-style',
