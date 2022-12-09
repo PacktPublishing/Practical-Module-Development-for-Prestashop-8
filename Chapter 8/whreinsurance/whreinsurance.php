@@ -56,7 +56,7 @@ class WHReinsurance extends Module
             $this->_path.'views/css/whreinsurance.css',
             [
                 'media' => 'all',
-                'priority' => 1000,
+                'priority' => 999,
             ]
         );
     }
