@@ -1,0 +1,100 @@
+parameters:
+  default_conf_key: 'WHCALLBACK_HOURS'
+
+services:
+  _defaults:
+    public: true
+
+  #---- ENTITIES ----
+  webhelpers.whcallback.repository.whcallbackrequest_repository:
+    class: WebHelpers\WHCallback\Repository\WHCallbackRequestRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - WebHelpers\WHCallback\Entity\WHCallbackRequest
+
+  #FORM SERVICES
+  #--> DATA PROVIDER - Responsible for providing data to the form builder
+  webhelpers.whcallback.form.identifiable_object.data_provider.setting_form_data_provider:
+    class: 'WebHelpers\WHCallback\Form\Setting\DataProvider\SettingFormDataProvider'
+    arguments:
+      - '@prestashop.core.query_bus'
+  #--> FORM BUILDER - Responsible for generating the form
+  webhelpers.whcallback.form.identifiable_object.builder.setting_form_builder:
+    class: 'PrestaShop\PrestaShop\Core\Form\Setting\Builder\FormBuilder'
+    factory: 'prestashop.core.form.builder.form_builder_factory:create'
+    arguments:
+      - 'WebHelpers\WHCallback\Form\Type\SettingType'
+      - '@webhelpers.whcallback.form.identifiable_object.data_provider.setting_form_data_provider'
+  #--> FORM DATA HANDLER - Responsible for handling the data sent by the FORM HANDLER
+  webhelpers.whcallback.form.identifiable_object.data_handler.setting_form_data_handler:
+    class: 'WebHelpers\WHCallback\Form\Setting\DataHandler\SettingFormDataHandler'
+    arguments:
+      - '@prestashop.core.command_bus'
+  #--> FORM HANDLER - Responsible for handling a form request
+  webhelpers.whcallback.form.identifiable_object.handler.setting_form_handler:
+    class: 'PrestaShop\PrestaShop\Core\Form\Setting\Handler\FormHandler'
+    factory: 'prestashop.core.form.identifiable_object.handler.form_handler_factory:create'
+    arguments:
+      - '@webhelpers.whcallback.form.identifiable_object.data_handler.setting_form_data_handler'
+
+  #QUERIES
+  webhelpers.whcallback.domain.setting.query_handler.get_setting_for_editing_handler:
+    class: 'WebHelpers\WHCallback\Domain\Setting\QueryHandler\GetSettingForEditingHandler'
+    arguments:
+      - '@prestashop.adapter.legacy.configuration'
+      - '%default_conf_key%'
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHCallback\Domain\Setting\Query\GetSettingForEditing }
+  #COMMANDS
+  webhelpers.whcallback.domain.setting.command_handler.edit_setting:
+    class: 'WebHelpers\WHCallback\Domain\Setting\CommandHandler\EditSettingHandler'
+    arguments:
+      - '@prestashop.adapter.legacy.configuration'
+      - '%default_conf_key%'
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHCallback\Domain\Setting\Command\EditSettingCommand }
+  webhelpers.whcallback.domain.whcallbackrequest.command_handler.delete_request:
+    class: 'WebHelpers\WHCallback\Domain\WHCallbackRequest\CommandHandler\DeleteWHCallbackRequestHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whcallback.repository.whcallbackrequest_repository'
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHCallback\Domain\WHCallbackRequest\Command\DeleteWHCallbackRequestCommand }
+
+  #GRID
+  webhelpers.whcallback.grid.definition.factory.whcallbackrequest_grid_definition_factory:
+    class: 'WebHelpers\WHCallback\Grid\Definition\Factory\WHCallbackRequestDefinitionFactory'
+    parent: 'prestashop.core.grid.definition.factory.abstract_grid_definition'
+    public: true
+
+  webhelpers.whcallback.grid.query.whcallbackrequest_query_builder:
+    class: 'WebHelpers\WHCallback\Grid\Query\WHCallbackRequestQueryBuilder'
+    parent: 'prestashop.core.grid.abstract_query_builder'
+    public: true
+    arguments:
+      - '@prestashop.core.query.doctrine_search_criteria_applicator'
+      - '@prestashop.core.grid.query.filter.doctrine_filter_applicator'
+
+  webhelpers.whcallback.grid.data.factory.whcallbackrequest_data_factory:
+    class: 'PrestaShop\PrestaShop\Core\Grid\Data\Factory\DoctrineGridDataFactory'
+    arguments:
+      - '@webhelpers.whcallback.grid.query.whcallbackrequest_query_builder'
+      - '@prestashop.core.hook.dispatcher'
+      - '@prestashop.core.grid.query.doctrine_query_parser'
+      - 'whcallbackrequest'
+    public: true
+
+  webhelpers.whcallback.grid.whcallbackrequest_grid_factory:
+    class: 'PrestaShop\PrestaShop\Core\Grid\GridFactory'
+    arguments:
+        - '@webhelpers.whcallback.grid.definition.factory.whcallbackrequest_grid_definition_factory'
+        - '@webhelpers.whcallback.grid.data.factory.whcallbackrequest_data_factory'
+        - '@prestashop.core.grid.filter.form_factory'
+        - '@prestashop.core.hook.dispatcher'
+
+  #CONTROLLERS
+  WebHelpers\WHCallback\Controller\AdminWHCallbackRequestController:
+    class: WebHelpers\WHCallback\Controller\AdminWHCallbackRequestController
+    arguments:
+      - '@doctrine.cache.provider'
+      - '@prestashop.core.command_bus'

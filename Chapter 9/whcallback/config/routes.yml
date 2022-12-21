@@ -1,0 +1,15 @@
+admin_whcallbackrequest_list:
+  path: whcallback/list
+  methods: [GET]
+  defaults:
+    _controller: 'WebHelpers\WHCallback\Controller\AdminWHCallbackRequestController::listAction'
+admin_whcallbackrequest_search:
+    path: whcallback/list
+    methods: [POST]
+    defaults:
+      _controller: 'WebHelpers\WHCallback\Controller\AdminWHCallbackRequestController::searchAction'
+admin_whcallbackrequest_delete:
+  path: whcallback/delete/{idRequest}
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHCallback\Controller\AdminWHCallbackRequestController::deleteAction'
