@@ -130,7 +130,7 @@ class WHCallback extends Module
                     );
 
                     $this->context->smarty->assign([
-                        'success_message' => $this->l('Thank you for you interest, we will call you back very soon!'),
+                        'success_message' => $this->l('Thank you for your interest, we will call you back very soon!'),
                     ]);
                 }
                 catch(\Exception $e){
