@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    public: true
+
+  #---- ENTITIES ----
+  webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository:
+    class: WebHelpers\WHCategoryFields\Repository\WHCategoryFieldsExtensionRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - WebHelpers\WHCategoryFields\Entity\WHCategoryFieldsExtension

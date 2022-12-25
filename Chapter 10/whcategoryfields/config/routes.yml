@@ -1,0 +1,6 @@
+admin_whcategoryfields_file_delete:
+  path: whcategoryfields/icon/delete/{idCategory}
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHCategoryFields\Controller\AdminWHCategoryFieldsController::deleteFileAction'
+    #_legacy_link: AdminWHCategoryTpl

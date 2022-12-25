@@ -1,0 +1,49 @@
+services:
+  _defaults:
+    public: true
+
+  #---- ENTITIES ----
+  webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository:
+    class: WebHelpers\WHCategoryFields\Repository\WHCategoryFieldsExtensionRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - WebHelpers\WHCategoryFields\Entity\WHCategoryFieldsExtension
+
+  #---- CONTROLLERS ----
+  WebHelpers\WHCategoryFields\Controller\AdminWHCategoryFieldsController:
+    class: WebHelpers\WHCategoryFields\Controller\AdminWHCategoryFieldsController
+    arguments:
+      - '@doctrine.cache.provider'
+      - '@prestashop.core.command_bus'
+
+  #---- COMMANDS -----
+  webhelpers.whcategoryfields.domain.hcategoryfieldsextension.command_handler.delete_extension_file:
+    class: 'WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\CommandHandler\DeleteExtensionFileHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository'
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\Command\DeleteExtensionFileCommand }
+  webhelpers.whcategoryfields.domain.hcategoryfieldsextension.command_handler.add_extension:
+    class: 'WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\CommandHandler\AddExtensionHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository'
+      - "@prestashop.core.admin.lang.repository"
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\Command\AddExtensionCommand }
+  webhelpers.whcategoryfields.domain.hcategoryfieldsextension.command_handler.edit_extension:
+    class: 'WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\CommandHandler\EditExtensionHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository'
+      - "@prestashop.core.admin.lang.repository"
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\Command\EditExtensionCommand }
+  webhelpers.whcategoryfields.domain.hcategoryfieldsextension.command_handler.delete_extension:
+    class: 'WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\CommandHandler\DeleteExtensionHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository'
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHCategoryFields\Domain\WHCategoryFieldsExtension\Command\DeleteExtensionCommand }

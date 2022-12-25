@@ -1,0 +1,20 @@
+<div class="form-group row mt-3">
+  <div class="col-sm">
+    <figure class="figure">
+      <img src="{{ filenameUrl }}" class="figure-img img-fluid img-thumbnail">
+
+            <figcaption class="figure-caption">
+                <button class="btn btn-outline-danger btn-sm js-form-submit-btn"
+                        data-form-submit-url="{{ pathDeletion }}"
+                        data-form-csrf-token="{{ csrf_token('delete-icon-image') }}"
+                        type="button"
+                >
+                <i class="material-icons">
+                    delete_forever
+                </i>
+                {{ 'Delete'|trans({}, 'Admin.Actions') }}
+                </button>
+            </figcaption>
+    </figure>
+  </div>
+</div>
