@@ -22,8 +22,11 @@ class DeleteExtensionHandler
     {
         try{
             $extension = $this->extensionRepository->findOneBy(['idCategory' => $deleteExtensionCommand->getIdCategory()]);
-            $this->entityManager->remove($extension);
-            $this->entityManager->flush();
+            if(!is_null($extension))
+            {
+                $this->entityManager->remove($extension);
+                $this->entityManager->flush();
+            }
         }catch(\Exception $e){
             throw new CannotDeleteExtensionException(
                 sprintf('Failed to delete the extension')
