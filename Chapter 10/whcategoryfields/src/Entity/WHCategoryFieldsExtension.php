@@ -204,7 +204,7 @@ class WHCategoryFieldsExtension
         $this->setExtensionDateUpdate();
 
         if ($this->getExtensionDateAdd() == null) {
-            $this->extensionDateAdd = new DateTime();
+            $this->setExtensionDateAdd();
         }
     }
 }
