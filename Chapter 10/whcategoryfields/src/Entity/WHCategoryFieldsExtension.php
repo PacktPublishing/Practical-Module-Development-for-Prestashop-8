@@ -57,7 +57,6 @@ class WHCategoryFieldsExtension
 
     public function __construct()
     {
-        $this->extensionDateAdd = new DateTime();
         $this->extensionLangs = new ArrayCollection();
     }
 
@@ -112,6 +111,15 @@ class WHCategoryFieldsExtension
     public function getExtensionDateAdd()
     {
         return $this->extensionDateAdd;
+    }
+    
+    /**
+     * @return WHCategoryFieldsExtension
+     */
+    public function setExtensionDateAdd()
+    {
+        $this->extensionDateAdd = new DateTime();
+        return $this;
     }
 
     /**
