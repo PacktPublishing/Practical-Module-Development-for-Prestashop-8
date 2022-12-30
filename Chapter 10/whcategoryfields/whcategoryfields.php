@@ -133,9 +133,6 @@ class WHCategoryFields extends Module
 
     public function hookActionCategoryFormBuilderModifier($params)
     {
-        $extensionRepository = $this->get('webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository');
-        $locales = $this->get('prestashop.adapter.legacy.context')->getLanguages();
-
         $formBuilder = $params['form_builder'];
         $formBuilder->add('short_text', TranslatableType::class, [
             'type' => TextType::class,
@@ -157,6 +154,7 @@ class WHCategoryFields extends Module
         ]);
 
         if(isset($params['id']) && $params['id']>0){
+            $extensionRepository = $this->get('webhelpers.whcategoryfields.repository.whcategoryfieldsextension_repository');
             $extension = $extensionRepository->findOneBy(['idCategory'=>$params['id']]);
 
             if(!is_null($extension)){
