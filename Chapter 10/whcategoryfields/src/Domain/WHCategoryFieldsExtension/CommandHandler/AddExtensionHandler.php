@@ -37,6 +37,7 @@ class AddExtensionHandler
                 $extensionLang->setLongText($longText[$language->getId()]);
                 $extension->addExtensionLang($extensionLang);
             }
+            $extension->setExtensionDateAdd();
             $extension->setIdCategory($addExtensionCommand->getIdCategory());
             $extension->setFilename($addExtensionCommand->getFilename());
             $this->entityManager->persist($extension);
