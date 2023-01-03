@@ -38,7 +38,7 @@ class WHHelloWorld extends Module
 
     public function uninstall()
     {
-        return parent::uninstall() && $this->unregisterHook('displayHome');
+        return parent::uninstall();
     }
 
     public function hookDisplayHome($params)
