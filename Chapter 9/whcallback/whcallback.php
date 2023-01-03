@@ -72,10 +72,7 @@ class WHCallback extends Module
         $this->dropTable();
         Configuration::deleteByName('CALLBACK_HOURS');
 
-        return parent::uninstall() &&
-            $this->unregisterHook('displayFooterBefore') &&
-            $this->unregisterHook('registerGDPRConsent') &&
-            $this->unregisterHook('actionFrontControllerSetMedia');
+        return parent::uninstall();
     }
 
     private function createTable()
