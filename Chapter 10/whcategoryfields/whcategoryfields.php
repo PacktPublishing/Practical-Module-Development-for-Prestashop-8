@@ -72,12 +72,7 @@ class WHCategoryFields extends Module
     {
         $this->dropTables();
 
-        return parent::uninstall() &&
-            $this->unregisterHook('displayHeaderCategory') &&
-            $this->unregisterHook('actionCategoryFormBuilderModifier') &&
-            $this->unregisterHook('actionAfterCreateCategoryFormHandler') &&
-            $this->unregisterHook('actionAfterUpdateCategoryFormHandler') &&
-            $this->unregisterHook('actionCategoryDelete');
+        return parent::uninstall();
     }
 
     private function createTable()
