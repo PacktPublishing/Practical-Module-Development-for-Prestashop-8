@@ -38,7 +38,7 @@ class WHReinsurance extends Module
 
     public function uninstall()
     {
-        return parent::uninstall() && $this->unregisterHook('displayFooterBefore') && $this->unregisterHook('actionFrontControllerSetMedia');
+        return parent::uninstall();
     }
 
     public function hookDisplayFooterBefore($params)
