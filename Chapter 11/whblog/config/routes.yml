@@ -1,0 +1,56 @@
+admin_whblog_category_list:
+  path: whblog/category/list
+  methods: [GET]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogCategoryController::listAction'
+admin_whblog_category_create:
+  path: whblog/category/create
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogCategoryController::createAction'
+admin_whblog_category_delete:
+  path: whblog/category/delete/{idCategory<\d+>?0}
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogCategoryController::deleteAction'
+  requirements:
+    idCategory: \d+
+admin_whblog_category_edit:
+  path: whblog/category/edit/{idCategory<\d+>?0}
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogCategoryController::editAction'
+  requirements:
+    idCategory: \d+
+
+admin_whblog_post_list:
+  path: whblog/post/list
+  methods: [GET]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogPostController::listAction'
+admin_whblog_post_list_filtered:
+  path: whblog/post/list/category/{idCategory<\d+>?0}
+  methods: [GET]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogPostController::listFromCategoryAction'
+  requirements:
+    idCategory: \d+
+admin_whblog_post_create:
+  path: whblog/post/create
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogPostController::createAction'
+admin_whblog_post_delete:
+  path: whblog/post/delete/{idPost<\d+>?0}
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogPostController::deleteAction'
+  requirements:
+    idCategory: \d+
+admin_whblog_post_edit:
+  path: whblog/post/edit/{idPost<\d+>?0}
+  methods: [GET, POST]
+  defaults:
+    _controller: 'WebHelpers\WHBlog\Controller\AdminWHBlogPostController::editAction'
+  requirements:
+    idCategory: \d+

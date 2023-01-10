@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    public: true
+  #---- ENTITIES ----
+  webhelpers.whblog.repository.whblogpost_repository:
+    class: WebHelpers\WHBlog\Repository\WHBlogPostRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - WebHelpers\WHBlog\Entity\WHBlogPost
+  webhelpers.whblog.repository.whblogcategory_repository:
+    class: WebHelpers\WHBlog\Repository\WHBlogCategoryRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - WebHelpers\WHBlog\Entity\WHBlogCategory
+  webhelpers.whblog.repository.whblogcategorypost_repository:
+    class: WebHelpers\WHBlog\Repository\WHBlogCategoryPostRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - WebHelpers\WHBlog\Entity\WHBlogCategoryPost

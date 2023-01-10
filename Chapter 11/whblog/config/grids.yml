@@ -1,0 +1,66 @@
+services:
+  _defaults:
+    public: true
+
+  #---- GRIDS ----
+  webhelpers.whblog.grid.definition.factory.category_grid_definition_factory:
+    class: 'WebHelpers\WHBlog\Grid\Definition\Factory\WHBlogCategoryDefinitionFactory'
+    parent: 'prestashop.core.grid.definition.factory.abstract_grid_definition'
+    public: true
+
+  webhelpers.whblog.grid.query.category_query_builder:
+    class: 'WebHelpers\WHBlog\Grid\Query\WHBlogCategoryQueryBuilder'
+    arguments:
+      - '@prestashop.core.query.doctrine_search_criteria_applicator'
+      - '@prestashop.core.grid.query.filter.doctrine_filter_applicator'
+      - "@=service('prestashop.adapter.legacy.context').getContext().language.id"
+    parent: 'prestashop.core.grid.abstract_query_builder'
+    public: true
+
+  webhelpers.whblog.grid.data.factory.category_data_factory:
+    class: 'PrestaShop\PrestaShop\Core\Grid\Data\Factory\DoctrineGridDataFactory'
+    arguments:
+      - '@webhelpers.whblog.grid.query.category_query_builder'
+      - '@prestashop.core.hook.dispatcher'
+      - '@prestashop.core.grid.query.doctrine_query_parser'
+      - 'whblogcategory'
+    public: true
+
+  webhelpers.whblog.grid.category_grid_factory:
+    class: 'PrestaShop\PrestaShop\Core\Grid\GridFactory'
+    arguments:
+        - '@webhelpers.whblog.grid.definition.factory.category_grid_definition_factory'
+        - '@webhelpers.whblog.grid.data.factory.category_data_factory'
+        - '@prestashop.core.grid.filter.form_factory'
+        - '@prestashop.core.hook.dispatcher'
+
+  webhelpers.whblog.grid.definition.factory.post_grid_definition_factory:
+    class: 'WebHelpers\WHBlog\Grid\Definition\Factory\WHBlogPostDefinitionFactory'
+    parent: 'prestashop.core.grid.definition.factory.abstract_grid_definition'
+    public: true
+
+  webhelpers.whblog.grid.query.post_query_builder:
+    class: 'WebHelpers\WHBlog\Grid\Query\WHBlogPostQueryBuilder'
+    arguments:
+      - '@prestashop.core.query.doctrine_search_criteria_applicator'
+      - '@prestashop.core.grid.query.filter.doctrine_filter_applicator'
+      - "@=service('prestashop.adapter.legacy.context').getContext().language.id"
+    parent: 'prestashop.core.grid.abstract_query_builder'
+    public: true
+
+  webhelpers.whblog.grid.data.factory.post_data_factory:
+    class: 'PrestaShop\PrestaShop\Core\Grid\Data\Factory\DoctrineGridDataFactory'
+    arguments:
+      - '@webhelpers.whblog.grid.query.post_query_builder'
+      - '@prestashop.core.hook.dispatcher'
+      - '@prestashop.core.grid.query.doctrine_query_parser'
+      - 'whblogpost'
+    public: true
+
+  webhelpers.whblog.grid.post_grid_factory:
+    class: 'PrestaShop\PrestaShop\Core\Grid\GridFactory'
+    arguments:
+        - '@webhelpers.whblog.grid.definition.factory.post_grid_definition_factory'
+        - '@webhelpers.whblog.grid.data.factory.post_data_factory'
+        - '@prestashop.core.grid.filter.form_factory'
+        - '@prestashop.core.hook.dispatcher'

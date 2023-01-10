@@ -1,0 +1,15 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+{% trans_default_domain "Admin.Design.Feature" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-12">
+    {% include '@PrestaShop/Admin/Common/Grid/grid_panel.html.twig' with {'grid': grid} %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('themes/default/js/bundle/pagination.js') }}"></script>
+{% endblock %}

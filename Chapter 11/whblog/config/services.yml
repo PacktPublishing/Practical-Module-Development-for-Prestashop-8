@@ -1,0 +1,7 @@
+imports:
+  - {resource: 'entities.yml'}
+  - {resource: 'forms.yml'}
+  - {resource: 'commands.yml'}
+  - {resource: 'queries.yml'}
+  - {resource: 'grids.yml'}
+  - {resource: 'controllers.yml'}

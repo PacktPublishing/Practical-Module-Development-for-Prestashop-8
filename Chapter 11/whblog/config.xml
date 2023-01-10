@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>whblog</name>
+    <displayName><![CDATA[Blog]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[This is a simple blog module.]]></description>
+    <author><![CDATA[Web Helpers]]></author>
+    <tab><![CDATA[front_office_features]]></tab>
+	<confirmUninstall><![CDATA[Do you still you want to uninstall this module?]]></confirmUninstall>
+    <is_configurable>0</is_configurable>
+    <need_instance>0</need_instance>
+</module>

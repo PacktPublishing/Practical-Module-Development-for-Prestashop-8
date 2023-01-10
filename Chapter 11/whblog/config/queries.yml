@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    public: true
+  #QUERIES
+  webhelpers.whblog.domain.whblogcategory.query_handler.get_category_for_editing_handler:
+    class: 'WebHelpers\WHBlog\Domain\WHBlogCategory\QueryHandler\GetCategoryForEditingHandler'
+    arguments:
+      - '@webhelpers.whblog.repository.whblogcategory_repository'
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogCategory\Query\GetCategoryForEditing }
+  webhelpers.whblog.domain.whblogcategory.query_handler.get_post_for_editing_handler:
+    class: 'WebHelpers\WHBlog\Domain\WHBlogPost\QueryHandler\GetPostForEditingHandler'
+    arguments:
+      - '@webhelpers.whblog.repository.whblogpost_repository'
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogPost\Query\GetPostForEditing }

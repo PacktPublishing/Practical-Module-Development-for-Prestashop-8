@@ -1,0 +1,56 @@
+services:
+  _defaults:
+    public: true
+
+  #COMMANDS
+  webhelpers.whblog.domain.whblogcategory.command_handler.edit_category:
+    class: 'WebHelpers\WHBlog\Domain\WHBlogCategory\CommandHandler\EditCategoryHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whblog.repository.whblogcategory_repository'
+      - "@prestashop.core.admin.lang.repository"
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogCategory\Command\EditCategoryCommand }
+  webhelpers.whblog.domain.whblogcategory.command_handler.create_category:
+    class: 'WebHelpers\WHBlog\Domain\WHBlogCategory\CommandHandler\CreateCategoryHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whblog.repository.whblogcategory_repository'
+      - "@prestashop.core.admin.lang.repository"
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogCategory\Command\CreateCategoryCommand }
+  webhelpers.whblog.domain.whblogcategory.command_handler.delete_category:
+      class: 'WebHelpers\WHBlog\Domain\WHBlogCategory\CommandHandler\DeleteCategoryHandler'
+      arguments:
+        - '@doctrine.orm.default_entity_manager'
+        - '@webhelpers.whblog.repository.whblogcategory_repository'
+      tags:
+        - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogCategory\Command\DeleteCategoryCommand }
+
+  webhelpers.whblog.domain.whblogpost.command_handler.edit_post:
+    class: 'WebHelpers\WHBlog\Domain\WHBlogPost\CommandHandler\EditPostHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whblog.repository.whblogpost_repository'
+      - '@webhelpers.whblog.repository.whblogcategory_repository'
+      - '@webhelpers.whblog.repository.whblogcategorypost_repository'
+      - "@prestashop.core.admin.lang.repository"
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogPost\Command\EditPostCommand }
+  webhelpers.whblog.domain.whblogpost.command_handler.create_post:
+    class: 'WebHelpers\WHBlog\Domain\WHBlogPost\CommandHandler\CreatePostHandler'
+    arguments:
+      - '@doctrine.orm.default_entity_manager'
+      - '@webhelpers.whblog.repository.whblogpost_repository'
+      - '@webhelpers.whblog.repository.whblogcategory_repository'
+      - '@webhelpers.whblog.repository.whblogcategorypost_repository'
+      - "@prestashop.core.admin.lang.repository"
+    tags:
+      - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogPost\Command\CreatePostCommand }
+  webhelpers.whblog.domain.whblogpost.command_handler.delete_post:
+      class: 'WebHelpers\WHBlog\Domain\WHBlogPost\CommandHandler\DeletePostHandler'
+      arguments:
+        - '@doctrine.orm.default_entity_manager'
+        - '@webhelpers.whblog.repository.whblogpost_repository'
+      tags:
+        - { name: tactician.handler, command: WebHelpers\WHBlog\Domain\WHBlogPost\Command\DeletePostCommand }

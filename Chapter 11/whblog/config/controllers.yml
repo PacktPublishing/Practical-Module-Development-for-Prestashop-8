@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    public: true
+  #---- CONTROLLERS ----
+  WebHelpers\WHBlog\Controller\AdminWHBlogCategoryController:
+    class: WebHelpers\WHBlog\Controller\AdminWHBlogCategoryController
+    arguments:
+    - '@doctrine.cache.provider'
+    - '@prestashop.core.command_bus'
+  WebHelpers\WHBlog\Controller\AdminWHBlogPostController:
+    class: WebHelpers\WHBlog\Controller\AdminWHBlogPostController
+    arguments:
+    - '@doctrine.cache.provider'
+    - '@prestashop.core.command_bus'

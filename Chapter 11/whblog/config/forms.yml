@@ -1,0 +1,61 @@
+services:
+  _defaults:
+    public: true
+
+  #FORM SERVICES
+  #--> DATA PROVIDERS
+  webhelpers.whblog.form.identifiable_object.data_provider.category_form_data_provider:
+    class: 'WebHelpers\WHBlog\Form\WHBlogCategory\DataProvider\WHBlogCategoryFormDataProvider'
+    arguments:
+      - '@prestashop.core.query_bus'
+  webhelpers.whblog.form.identifiable_object.data_provider.post_form_data_provider:
+    class: 'WebHelpers\WHBlog\Form\WHBlogPost\DataProvider\WHBlogPostFormDataProvider'
+    arguments:
+      - '@prestashop.core.query_bus'
+  #--> FORM BUILDERS
+  webhelpers.whblog.form.type.category_type:
+    class: 'WebHelpers\WHBlog\Form\Type\WHBlogCategoryType'
+    parent: 'form.type.translatable.aware'
+    public: true
+    tags:
+      - { name: form.type }
+  webhelpers.whblog.form.type.post_type:
+    class: 'WebHelpers\WHBlog\Form\Type\WHBlogPostType'
+    parent: 'form.type.translatable.aware'
+    public: true
+    tags:
+      - { name: form.type }
+    arguments:
+      - '@webhelpers.whblog.repository.whblogcategory_repository'
+  webhelpers.whblog.form.identifiable_object.builder.category_form_builder:
+    class: 'PrestaShop\PrestaShop\Core\Form\Setting\Builder\FormBuilder'
+    factory: 'prestashop.core.form.builder.form_builder_factory:create'
+    arguments:
+      - 'WebHelpers\WHBlog\Form\Type\WHBlogCategoryType'
+      - '@webhelpers.whblog.form.identifiable_object.data_provider.category_form_data_provider'
+  webhelpers.whblog.form.identifiable_object.builder.post_form_builder:
+    class: 'PrestaShop\PrestaShop\Core\Form\Setting\Builder\FormBuilder'
+    factory: 'prestashop.core.form.builder.form_builder_factory:create'
+    arguments:
+      - 'WebHelpers\WHBlog\Form\Type\WHBlogPostType'
+      - '@webhelpers.whblog.form.identifiable_object.data_provider.post_form_data_provider'
+  #--> FORM DATA HANDLERS
+  webhelpers.whblog.form.identifiable_object.data_handler.category_form_data_handler:
+    class: 'WebHelpers\WHBlog\Form\WHBlogCategory\DataHandler\WHBlogCategoryFormDataHandler'
+    arguments:
+      - '@prestashop.core.command_bus'
+  webhelpers.whblog.form.identifiable_object.data_handler.post_form_data_handler:
+    class: 'WebHelpers\WHBlog\Form\WHBlogPost\DataHandler\WHBlogPostFormDataHandler'
+    arguments:
+      - '@prestashop.core.command_bus'
+  #--> FORM HANDLERS
+  webhelpers.whblog.form.identifiable_object.handler.category_form_handler:
+    class: 'PrestaShop\PrestaShop\Core\Form\Setting\Handler\FormHandler'
+    factory: 'prestashop.core.form.identifiable_object.handler.form_handler_factory:create'
+    arguments:
+      - '@webhelpers.whblog.form.identifiable_object.data_handler.category_form_data_handler'
+  webhelpers.whblog.form.identifiable_object.handler.post_form_handler:
+    class: 'PrestaShop\PrestaShop\Core\Form\Setting\Handler\FormHandler'
+    factory: 'prestashop.core.form.identifiable_object.handler.form_handler_factory:create'
+    arguments:
+      - '@webhelpers.whblog.form.identifiable_object.data_handler.post_form_data_handler'

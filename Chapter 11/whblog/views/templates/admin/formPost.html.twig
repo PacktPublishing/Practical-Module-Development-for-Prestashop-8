@@ -1,0 +1,22 @@
+{% extends '@!PrestaShop/Admin/layout.html.twig' %}
+{% trans_default_domain "Admin.Design.Feature" %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-xl-10">
+      <div class="card">
+        <h3 class="card-header">
+          {{ 'Blog Post'|trans({}, 'Modules.Whblog.Admin') }}
+        </h3>
+        <div class="card-block">
+          {{ form(postForm) }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('../modules/whblog/views/public/WHBlogCategory.bundle.js') }}"></script>
+  <script src="{{ asset('themes/new-theme/js/components/form/choice-tree.js') }}"></script>
+{% endblock %}
