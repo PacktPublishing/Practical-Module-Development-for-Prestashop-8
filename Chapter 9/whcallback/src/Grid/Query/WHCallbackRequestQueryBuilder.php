@@ -26,7 +26,7 @@ final class WHCallbackRequestQueryBuilder extends AbstractDoctrineQueryBuilder
      * @param Connection $connection
      * @param string $dbPrefix
      */
-    public function __construct(Connection $connection, $dbPrefix, DoctrineSearchCriteriaApplicatorInterface $searchCriteriaApplicator, DoctrineFilterApplicatorInterface $filterApplicator,)
+    public function __construct(Connection $connection, $dbPrefix, DoctrineSearchCriteriaApplicatorInterface $searchCriteriaApplicator, DoctrineFilterApplicatorInterface $filterApplicator)
     {
         parent::__construct($connection, $dbPrefix);
         $this->searchCriteriaApplicator = $searchCriteriaApplicator;
