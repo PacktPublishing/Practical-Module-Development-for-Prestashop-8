@@ -164,7 +164,7 @@ class WHCategoryFields extends Module
                         'template' => '@Modules/whcategoryfields/views/templates/admin/upload_image.html.twig',
                         'data' => [
                             'pathDeletion' => $deletionLink,
-                            'filenameUrl' => "/modules/".$this->name."/views/img/uploads/".$extension->getFileName(),
+                            'filenameUrl' => $link->getBaseLink()."/modules/".$this->name."/views/img/uploads/".$extension->getFileName(),
                         ],
                     ]);
                 }
