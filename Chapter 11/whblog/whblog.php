@@ -38,6 +38,7 @@ class WHBlog extends Module
             'max' => '8.99.99',
         ];
         $this->bootstrap = true;
+        $this->controllers = ['category','home','post'];
 
         parent::__construct();
 
