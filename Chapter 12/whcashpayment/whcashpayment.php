@@ -33,7 +33,6 @@ class WHCashPayment extends PaymentModule
         parent::__construct();
 
         //Optional localizable attributes
-        $this->bootstrap = true;
         $this->confirmUninstall = $this->l('Do you still you want to uninstall this module?');
         $this->description = $this->l('This module displays a cash payment option');
         $this->displayName = $this->l('Cash Payment');
