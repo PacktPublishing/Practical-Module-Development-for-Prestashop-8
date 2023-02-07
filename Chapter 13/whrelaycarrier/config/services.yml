@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    public: true
+
+  #---- ENTITIES ----
+  webhelpers.whrelaycarrier.repository.whrelaycart_repository:
+    class: WebHelpers\WHRelayCarrier\Repository\WHRelayCartRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - WebHelpers\WHRelayCarrier\Entity\WHRelayCart
