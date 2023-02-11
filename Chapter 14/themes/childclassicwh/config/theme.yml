@@ -1,0 +1,11 @@
+parent: classic
+name: childclassicwh
+display_name: Classic child theme WebHelpers
+version: 1.0.0
+author:
+  name: "Web Helpers"
+  email: "louis@web-helpers.io"
+  url: "https://www.web-helpers.io"
+
+assets:
+  use_parent_assets: true
