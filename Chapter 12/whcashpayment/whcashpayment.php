@@ -108,7 +108,7 @@ class WHCashPayment extends PaymentModule
     }
 
     //Check if the module is the list of authorized currencies
-    public function checkCurrency($cart)
+    private function checkCurrency($cart)
     {
         $currency_order = new Currency((int) ($cart->id_currency));
         $currencies_module = $this->getCurrency((int) $cart->id_currency);
@@ -123,7 +123,7 @@ class WHCashPayment extends PaymentModule
         return false;
     }
 
-    public function installOrderState()
+    private function installOrderState()
     {
         if (Configuration::getGlobalValue(WHCashPayment::CONFIG_OS_WHCASH)) {
             $orderState = new OrderState((int) Configuration::getGlobalValue(WHCashPayment::CONFIG_OS_WHCASH));
