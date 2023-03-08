@@ -127,7 +127,6 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
 
     private function findCheckedRelayFromCart()
     {
-       $entityManager = $this->get('doctrine.orm.entity_manager');
        $relayCartRepository = $this->get('webhelpers.whrelaycarrier.repository.whrelaycart_repository');
        $id_cart = $this->context->cart->id;
 
