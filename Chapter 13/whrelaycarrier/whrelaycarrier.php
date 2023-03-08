@@ -71,7 +71,16 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
         //0 for longest, 9 for fastest
         $carrier->grade = 8;
         if ($carrier->add()) {
-            $carrier->setGroups(Group::getAllGroupIds());
+            $carrier->setGroups(Group::getAllGroupIds()); //Available from v.8.0 of PS
+            /* --- For v1.7 only ---
+            $groupsIds=[];
+            foreach(Group::getGroups($this->context->language->id) as $group)
+            {
+                $groupsIds[]= $group['id_group'];
+            }
+            $carrier->setGroups($groupIds);
+             --- For v1.7 only ---
+            */
 
             $rangeWeight = new RangeWeight();
             $rangeWeight->id_carrier = $carrier->id;
