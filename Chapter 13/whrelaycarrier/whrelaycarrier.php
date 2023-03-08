@@ -125,7 +125,7 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
         }
     }
 
-    private function findCheckedRelayFromCart()
+    private function findCheckoutRelayFromCart()
     {
        $relayCartRepository = $this->get('webhelpers.whrelaycarrier.repository.whrelaycart_repository');
        $id_cart = $this->context->cart->id;
@@ -139,7 +139,7 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
             'relays'=>$this->relays,
         ]);
 
-        $relayCart = $this->findCheckedRelayFromCart();
+        $relayCart = $this->findCheckoutRelayFromCart();
         if(!is_null($relayCart)){
             $this->smarty->assign([
                 'id_relay_checked' => $relayCart->getRelay(),
@@ -172,7 +172,7 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
                 ]
             );
 
-            $relayCart = $this->findCheckedRelayFromCart();
+            $relayCart = $this->findCheckoutRelayFromCart();
             $id_relay = 0;
             if(!is_null($relayCart)){
                 $id_relay = $relayCart->getRelay();
