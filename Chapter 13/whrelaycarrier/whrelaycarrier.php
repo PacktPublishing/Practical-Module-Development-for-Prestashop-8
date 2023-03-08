@@ -97,8 +97,8 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
         $id_carrier = Configuration::get('WHRELAYCARRIER_ID');
         $carrier = new Carrier($id_carrier);
         $carrier->delete();
-
         $this->dropTable();
+        Configuration::deleteByName('WHRELAYCARRIER_ID');
         return parent::uninstall();
     }
 
