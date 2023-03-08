@@ -129,7 +129,7 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
     {
        $entityManager = $this->get('doctrine.orm.entity_manager');
        $relayCartRepository = $this->get('webhelpers.whrelaycarrier.repository.whrelaycart_repository');
-       $id_cart = Context::getContext()->cart->id;
+       $id_cart = $this->context->cart->id;
 
        return $relayCartRepository->findOneBy(['cart'=>$id_cart]);
     }
@@ -180,8 +180,8 @@ class WHRelayCarrier extends CarrierModule implements WidgetInterface
             }
 
             Media::addJsDef([
-                'ajaxUrl' => Context::getContext()->link->getModuleLink($this->name, 'ajax', ['ajax'=>true]),
-                'id_cart' => Context::getContext()->cart->id,
+                'ajaxUrl' => $this->context->link->getModuleLink($this->name, 'ajax', ['ajax'=>true]),
+                'id_cart' => $this->context->cart->id,
                 'id_relay' => $id_relay,
                 'id_carrier' => Configuration::get('WHRELAYCARRIER_ID'),
             ]);
