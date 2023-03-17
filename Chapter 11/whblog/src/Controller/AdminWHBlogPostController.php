@@ -93,7 +93,7 @@ class AdminWHBlogPostController extends FrameworkBundleAdminController
         $postForm = $postFormBuilder->getForm();
         $postForm->handleRequest($request);
         $postFormHandler = $this->get('webhelpers.whblog.form.identifiable_object.handler.post_form_handler');
-        $result = $postFormHandler->handle($postForm);
+        $postFormHandler->handle($postForm);
         if ($postForm->isSubmitted() && $postForm->isValid())
         {
             $this->addFlash('success', $this->trans('Successful creation.', 'Admin.Notifications.Success'));
@@ -111,7 +111,7 @@ class AdminWHBlogPostController extends FrameworkBundleAdminController
         $postForm = $postFormBuilder->getFormFor((int)$idPost);
         $postForm->handleRequest($request);
         $postFormHandler = $this->get('webhelpers.whblog.form.identifiable_object.handler.post_form_handler');
-        $result = $postFormHandler->handleFor($idPost, $postForm);
+        $postFormHandler->handleFor($idPost, $postForm);
         if ($postForm->isSubmitted() && $postForm->isValid())
         {
             $this->addFlash('success', $this->trans('Successful update.', 'Admin.Notifications.Success'));
