@@ -82,7 +82,7 @@ class AdminWHBlogCategoryController extends FrameworkBundleAdminController
         $categoryForm = $categoryFormBuilder->getForm();
         $categoryForm->handleRequest($request);
         $categoryFormHandler = $this->get('webhelpers.whblog.form.identifiable_object.handler.category_form_handler');
-        $result = $categoryFormHandler->handle($categoryForm);
+        $categoryFormHandler->handle($categoryForm);
         if ($categoryForm->isSubmitted() && $categoryForm->isValid())
         {
             $this->addFlash('success', $this->trans('Successful creation.', 'Admin.Notifications.Success'));
