@@ -1,6 +1,6 @@
 # Practical Module Development for PrestaShop 8
 
-<a href="https://www.packtpub.com/product/practical-module-development-for-prestashop-17/9781837635962?utm_source=github&utm_medium=repository&utm_campaign=9781804613900"><img src="https://content.packt.com/B19447/cover_image_small.jpg" alt="" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/product/practical-module-development-for-prestashop-17/9781837635962?utm_source=github&utm_medium=repository&utm_campaign=9781804613900"><img src="https://m.media-amazon.com/images/I/41AmEwhCKFL._SX404_BO1,204,203,200_.jpg" alt="" height="256px" align="right"></a>
 
 This is the code repository for [Practical Module Development for PrestaShop 8](https://www.packtpub.com/product/practical-module-development-for-prestashop-17/9781837635962?utm_source=github&utm_medium=repository&utm_campaign=9781804613900), published by Packt.
 
