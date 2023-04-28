@@ -60,3 +60,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 is a freelance full-stack developer with over 25 years of experience in PHP. He graduated from the ENAC, Toulouse, France in 2011 as an engineer and from the CNAM Paris, France as an analyst programmer in 2017.
 Since 2012, he’s developed and maintained modules and themes from various versions of PrestaShop. Becoming an associate for Label Naturel’s bedding e-shop in 2016 improved his awareness of online sellers’ challenges. In 2019, he started contributing to the PrestaShop open source project, first to the documentation, then to back-office migration and bug fixes. Louis co-founded Web-Helpers, a web agency, in 2020, and teaches professionals in PHP, WordPress, PrestaShop, and Symfony development as a consultant trainer.
 
+
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781837635962">https://packt.link/free-ebook/9781837635962 </a> </p>
