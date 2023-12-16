@@ -3,7 +3,6 @@
 {block name='page_title'}
   {$title}
 {/block}
-{dump($module_dir)}
 {block name='page_content'}
   <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   {foreach from=$posts item=post}
